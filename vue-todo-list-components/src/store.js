@@ -1,32 +1,20 @@
 export default {
-    strict: true,
+    // strict: true,
     state: {
         // 应用的数据
         test: 'hello vuex',
-        counters: [
-            {value:0},
-            {value:0},
-            {value:0}
-        ],
-        counterTotal: 0
+        todoList: [
+            { content: "吃饭", status: "active" },
+            { content: "睡觉", status: "active" },
+            { content: "打豆豆", status: "active" }
+          ],
+          inputtingtext: "",
+          currentFilter: "active"
     },
     getters: {
-        counterSum: function (state) {
-            let sum = 0;
-            state.counters.forEach(element => {
-                sum = sum + element.value;
-            });
-            return sum;
-        }
+       
     },
     mutations: {
-        plusValue(state, index) {
-            state.counters[index].value++;
-            state.counterTotal++;
-        },
-        minusValue(state, index) {
-            state.counters[index].value--;
-            state.counterTotal--;
-        }
+
     }
 }

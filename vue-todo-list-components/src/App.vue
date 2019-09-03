@@ -15,7 +15,7 @@
     </div>
 
     <div id="filter">
-      当前状态：{{currentFilter}}
+      当前状态：{{this.$store.state.currentFilter}}
       <button @click="handleStatus('active')">active</button>
       <button @click="handleStatus('complete')">complete</button>
     </div>
@@ -37,24 +37,26 @@ export default {
        * 定义了 todo item 中属性为 {content:'吃饭',status:'active'}
        * 定义了 todo 的两种状态 completed、active，默认为 active
        */
-      todoList: [
-        { content: "吃饭", status: "active" },
-        { content: "睡觉", status: "active" },
-        { content: "打豆豆", status: "active" }
-      ],
+      // todoList: [
+      //   { content: "吃饭", status: "active" },
+      //   { content: "睡觉", status: "active" },
+      //   { content: "打豆豆", status: "active" }
+      // ],
       inputtingtext: "",
-      currentFilter: "active"
+      // currentFilter: "active"
     };
   },
 
   computed: {
+
+
     tudolistfilter: function() {
       let filterList = [];
-      for (let index = 0; index < this.todoList.length; index++) {
-        const element = this.todoList[index];
+      for (let index = 0; index < this.$store.state.todoList.length; index++) {
+        const element = this.$store.state.todoList[index];
         if (
-          element.status === this.currentFilter ||
-          this.currentFilter === "all"
+          element.status === this.$store.state.currentFilter ||
+          this.$store.state.currentFilter === "all"
         ) {
           filterList.push(element);
         }
@@ -66,13 +68,13 @@ export default {
   methods: {
     handleAdd: function(inputtingtext) {
       console.log(40, inputtingtext);
-      this.todoList.push({
+      this.$store.state.todoList.push({
         content: inputtingtext,
         status: "active"
       });
     },
     handleStatus: function(status) {
-      this.currentFilter = status;
+      this.$store.state.currentFilter = status;
     },
     handleChose: function(item) {
       if (item.selected) {
@@ -117,4 +119,20 @@ export default {
   padding: 3px;
   cursor: pointer;
 }
+
+button{
+display: inline-block;
+background-color:#fc999b;
+color:#ffffff;
+border-radius: 5px;
+text-align:center;
+margin-top:2px;
+padding: 5px 15px;
+}
+
+button:hover{
+cursor: pointer;
+opacity: .8;
+}
+
 </style>
