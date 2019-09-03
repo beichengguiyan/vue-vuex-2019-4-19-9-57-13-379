@@ -12,7 +12,19 @@ export default {
           currentFilter: "active"
     },
     getters: {
-       
+        tudolistfilter: function(state) {
+            let filterList = [];
+            for (let index = 0; index < state.todoList.length; index++) {
+              const element = state.todoList[index];
+              if (
+                element.status === state.currentFilter ||
+                state.currentFilter === "all"
+              ) {
+                filterList.push(element);
+              }
+            }
+            return filterList;
+          }
     },
     mutations: {
 

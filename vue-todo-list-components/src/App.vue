@@ -7,7 +7,7 @@
 
     <div id="list">
       <ul>
-        <li v-for="(item,index) in tudolistfilter" :key="index">
+        <li v-for="(item,index) in this.$store.getters.tudolistfilter" :key="index">
           <input type="checkbox" @change="handleChose(item)" v-model="item.selected">
           {{item.content}}
           </li>
@@ -49,20 +49,19 @@ export default {
 
   computed: {
 
-
-    tudolistfilter: function() {
-      let filterList = [];
-      for (let index = 0; index < this.$store.state.todoList.length; index++) {
-        const element = this.$store.state.todoList[index];
-        if (
-          element.status === this.$store.state.currentFilter ||
-          this.$store.state.currentFilter === "all"
-        ) {
-          filterList.push(element);
-        }
-      }
-      return filterList;
-    }
+    // tudolistfilter: function() {
+    //   let filterList = [];
+    //   for (let index = 0; index < this.$store.state.todoList.length; index++) {
+    //     const element = this.$store.state.todoList[index];
+    //     if (
+    //       element.status === this.$store.state.currentFilter ||
+    //       this.$store.state.currentFilter === "all"
+    //     ) {
+    //       filterList.push(element);
+    //     }
+    //   }
+    //   return filterList;
+    // }
   },
 
   methods: {
