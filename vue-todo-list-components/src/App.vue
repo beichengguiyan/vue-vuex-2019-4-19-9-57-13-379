@@ -16,6 +16,7 @@
 
     <div id="filter">
       当前状态：{{this.$store.state.currentFilter}}
+      <button @click="handleStatus('all')">all</button>
       <button @click="handleStatus('active')">active</button>
       <button @click="handleStatus('complete')">complete</button>
     </div>
@@ -47,7 +48,7 @@ export default {
     };
   },
 
-  computed: {
+  // computed: {
 
     // tudolistfilter: function() {
     //   let filterList = [];
@@ -62,7 +63,7 @@ export default {
     //   }
     //   return filterList;
     // }
-  },
+  // },
 
   methods: {
     handleAdd: function(inputtingtext) {
